@@ -11,7 +11,7 @@
 
 ### 💡 Helpers
 
--  #### [selectors](./helpers/selectors.js)
+-  #### [selectors](./src/helpers/selectors.js)
 
    > <img src="./.github/assets/readme/vite.svg" >
    > <img src="./.github/assets/readme/react.svg" >
@@ -27,7 +27,7 @@
    sElAll(element, '.childs'); // element.querySelectorAll('.childs');
    ```
 
--  #### [head](./helpers/head.js)
+-  #### [head](./src/helpers/head.js)
 
    > <img src="./.github/assets/readme/vite.svg" >
    > <img src="./.github/assets/readme/react.svg" >
@@ -83,7 +83,7 @@
       });
       ```
 
--  #### [setTime](./helpers/setTime.js)
+-  #### [setTime](./src/helpers/setTime.js)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
    > <img src="./.github/assets/readme/vite.svg" >
@@ -96,6 +96,7 @@
 
       setTime(1000); // 1000
       setTime('1000'); // 1000
+
       setTime('1s'); // 1000
       setTime('1m'); // 60000
       setTime('1h'); // 3600000

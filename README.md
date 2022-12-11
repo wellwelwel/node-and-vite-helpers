@@ -71,6 +71,29 @@
 
    </details>
 
+-  #### [input](./src/helpers/input-clean.js)
+
+   > <img src="./.github/assets/readme/nodejs.svg" >
+   > <img src="./.github/assets/readme/vite.svg" >
+   > <img src="./.github/assets/readme/react.svg" >
+
+   <details open>
+   <summary>See an example</summary>
+
+   ```js
+   import { striptags, entities, xss } from 'node-and-vite-helpers';
+
+   striptags('<div>🤔...</div>'); // 🤔...
+
+   xss('<div>🤔...</div>'); // &#129300;...
+   xss('&lt;div&gt;&#129300;&lt;/div&gt;'); // &#129300;...
+
+   entities.encode('<div>🤔...</div>'); // &lt;div&gt;&#129300;&lt;/div&gt;
+   entities.decode('&#129300;...'); // 🤔...
+   ```
+
+   </details>
+
 -  #### [tokenGenerate](./src/helpers/tokenGenerate.js)
 
    > <img src="./.github/assets/readme/nodejs.svg" >

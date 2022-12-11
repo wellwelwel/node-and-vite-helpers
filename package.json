@@ -39,7 +39,7 @@
       "url": "https://github.com/wellwelwel/node-and-vite-helpers/issues"
    },
    "homepage": "https://github.com/wellwelwel/node-and-vite-helpers#readme",
-   "description": "🌱 A personal compilation with helpers to NodeJS and Vite",
+   "description": "🌱 A personal compilation with helpers for NodeJS and Vite",
    "engines": {
       "node": ">=14.18.0 || >=16.0.0",
       "npm": ">=7.0.2"

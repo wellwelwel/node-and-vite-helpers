@@ -9,6 +9,8 @@
 
 <hr />
 
+### 💡 Helpers
+
 -  #### [selectors](./src/helpers/selectors.js)
 
    > <img src="./.github/assets/readme/vite.svg" >

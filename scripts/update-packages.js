@@ -1,4 +1,4 @@
-import { updatePackages } from '../src/get-latest-version.js';
+import { updatePackages } from '../src/helpers/get-latest-version.js';
 
 (async () => {
    updatePackages();

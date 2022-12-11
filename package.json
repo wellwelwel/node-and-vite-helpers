@@ -7,7 +7,10 @@
    "scripts": {
       "init": "npm i --ignore-scripts;",
       "init:update": "npm run init; npm run update;",
-      "update": "node './scripts/update-packages.js'; npm i --ignore-scripts;"
+      "update": "node './scripts/update-packages.js'; npm i --ignore-scripts; npm audit fix;",
+      "update:patch": "npm run update; npm version patch --no-git-tag-version;",
+      "update:minor": "npm run update; npm version minor --no-git-tag-version;",
+      "update:major": "npm run update; npm version major --no-git-tag-version;"
    },
    "dependencies": {
       "html-entities": "^2.3.3"
@@ -15,5 +18,31 @@
    "devDependencies": {
       "prettier": "^2.8.1"
    },
-   "license": "MIT"
+   "license": "MIT",
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/wellwelwel/node-and-vite-helpers.git"
+   },
+   "keywords": [
+      "helpers",
+      "utils",
+      "node",
+      "vite",
+      "reactjs",
+      "classname",
+      "input",
+      "sanitizer",
+      "xss",
+      "head"
+   ],
+   "author": "https://github.com/wellwelwel",
+   "bugs": {
+      "url": "https://github.com/wellwelwel/node-and-vite-helpers/issues"
+   },
+   "homepage": "https://github.com/wellwelwel/node-and-vite-helpers#readme",
+   "description": "🌱 A personal compilation with helpers to NodeJS and Vite",
+   "engines": {
+      "node": ">=14.18.0 || >=16.0.0",
+      "npm": ">=7.0.2"
+   }
 }

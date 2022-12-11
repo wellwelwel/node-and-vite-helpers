@@ -21,6 +21,6 @@ jobs:
               scope: '@wellwelwel'
 
          - name: 📥 Publishing Package
-           run: npm i --ignore-scripts; npm config set access public; npm publish;
+           run: npm config set access public; npm config set registry http://registry.npmjs.org; npm publish;
            env:
               NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

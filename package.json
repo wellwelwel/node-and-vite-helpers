@@ -1,0 +1,19 @@
+{
+   "name": "@wellwelwel/node-and-vite-helpers",
+   "main": "./src/index.js",
+   "private": true,
+   "version": "0.1.0",
+   "type": "module",
+   "scripts": {
+      "init": "npm i --ignore-scripts;",
+      "init:update": "npm run init; npm run update;",
+      "update": "node './scripts/update-packages.js'; npm i --ignore-scripts;"
+   },
+   "dependencies": {
+      "html-entities": "^2.3.3"
+   },
+   "devDependencies": {
+      "prettier": "^2.8.1"
+   },
+   "license": "MIT"
+}

@@ -17,8 +17,7 @@ jobs:
            with:
               node-version: '19'
               check-latest: true
-              registry-url: 'https://registry.npmjs.org/'
-              scope: '@wellwelwel'
+              registry-url: 'https://registry.npmjs.org'
 
          - name: 📥 Publishing Package
            run: npm publish

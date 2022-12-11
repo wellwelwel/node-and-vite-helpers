@@ -1,9 +1,8 @@
 {
-   "name": "@wellwelwel/node-and-vite-helpers",
+   "name": "node-and-vite-helpers",
    "main": "./src/index.js",
    "version": "0.1.12",
    "type": "module",
-   "private": false,
    "scripts": {
       "init": "npm i --ignore-scripts;",
       "init:update": "npm run init; npm run update;",
@@ -44,9 +43,5 @@
    "engines": {
       "node": ">=14.18.0 || >=16.0.0",
       "npm": ">=7.0.2"
-   },
-   "publishConfig": {
-      "access": "public",
-      "registry": "https://registry.npmjs.org"
    }
 }

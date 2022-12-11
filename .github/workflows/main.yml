@@ -18,9 +18,8 @@ jobs:
               node-version: '19'
               check-latest: true
               registry-url: 'https://registry.npmjs.org'
-              scope: '@wellwelwel'
 
          - name: 📥 Publishing Package
-           run: npm config set access public; npm config set registry http://registry.npmjs.org; npm publish;
+           run: npm publish
            env:
               NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

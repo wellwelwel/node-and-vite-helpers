@@ -30,24 +30,6 @@
 
    </details>
 
--  #### [doClass](./src/helpers/doClass.js)
-
-   > <img src="./.github/assets/readme/nodejs.svg" >
-   > <img src="./.github/assets/readme/vite.svg" >
-   > <img src="./.github/assets/readme/react.svg" >
-
-   <details open>
-   <summary>See an example</summary>
-
-   ```js
-   import { cx } from 'node-and-vite-helpers';
-
-   cx(validCondition && 'active', 'class1 class2', invalidCondition && 'hide');
-   // 'active class1 class2'
-   ```
-
-   </details>
-
 -  #### [setTime](./src/helpers/setTime.js)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
@@ -67,6 +49,39 @@
    setTime('1m'); // 60000
    setTime('1h'); // 3600000
    setTime('1d'); // 86400000
+   ```
+
+   </details>
+
+-  #### [doClass](./src/helpers/doClass.js)
+
+   > <img src="./.github/assets/readme/nodejs.svg" >
+   > <img src="./.github/assets/readme/vite.svg" >
+   > <img src="./.github/assets/readme/react.svg" >
+
+   <details open>
+   <summary>See an example</summary>
+
+   ```js
+   import { cx } from 'node-and-vite-helpers';
+
+   cx(validCondition && 'active', 'class1 class2', invalidCondition && 'hide');
+   // 'active class1 class2'
+   ```
+
+   </details>
+
+-  #### [tokenGenerate](./src/helpers/tokenGenerate.js)
+
+   > <img src="./.github/assets/readme/nodejs.svg" >
+
+   <details open>
+   <summary>See an example</summary>
+
+   ```js
+   import { tokenGenerate } from 'node-and-vite-helpers';
+
+   tokenGenerate(8); // '45832c3f', 'fa3fe988', '749ecfaa', ...
    ```
 
    </details>

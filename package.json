@@ -3,6 +3,7 @@
    "main": "./src/index.js",
    "version": "0.1.12",
    "type": "module",
+   "private": false,
    "scripts": {
       "init": "npm i --ignore-scripts;",
       "init:update": "npm run init; npm run update;",

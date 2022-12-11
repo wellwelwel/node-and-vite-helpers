@@ -19,13 +19,12 @@
    -  An example of using:
 
    ```js
-   import * from '#helpers/selectors';
-   // import { s, sAll, sEl, sElAll } from 'helpers/selectors';
+   import { s, sAll, sEl, sElAll } from 'node-and-vite-helpers';
 
-   s('#id');                     // document.querySelector('#id');
-   sAll('.class');               // document.querySelectorAll('.class');
-   sEl(element, '.child');       // element.querySelector('.child');
-   sElAll(element, '.childs');   // element.querySelectorAll('.childs');
+   s('#id'); // document.querySelector('#id');
+   sAll('.class'); // document.querySelectorAll('.class');
+   sEl(element, '.child'); // element.querySelector('.child');
+   sElAll(element, '.childs'); // element.querySelectorAll('.childs');
    ```
 
 -  #### [head](./helpers/head.js)
@@ -36,8 +35,8 @@
    -  An example of using:
 
       ```js
-      import head from '#helpers/head';
-      import { favicon } from '../favicon.svg';
+      import { head } from 'node-and-vite-helpers';
+      import favicon from '../favicon.svg';
 
       /**
        * These functions check if an element already exists in head
@@ -93,12 +92,14 @@
    -  An example of using:
 
       ```js
-      import setTime from '#helpers/setTime';
+      import { setTime } from 'node-and-vite-helpers';
 
       setTime(1000); // 1000
+      setTime('1000'); // 1000
       setTime('1s'); // 1000
       setTime('1m'); // 60000
       setTime('1h'); // 3600000
+      setTime('1d'); // 86400000
       ```
 
 <hr />

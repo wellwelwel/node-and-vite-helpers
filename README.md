@@ -1,0 +1,110 @@
+<h2 align="center">Helpers to Node and Vite</h2>
+<p align="center">🌱 A <b>personal</b> compilation with helpers for NodeJS and Vite</p>
+
+### Install
+
+```shell
+   npm i node-and-vite-helpers
+```
+
+<hr />
+
+### 💡 Helpers
+
+-  #### [selectors](./helpers/selectors.js)
+
+   > <img src="./.github/assets/readme/vite.svg" >
+   > <img src="./.github/assets/readme/react.svg" >
+
+   -  An example of using:
+
+   ```js
+   import * from '#helpers/selectors';
+   // import { s, sAll, sEl, sElAll } from 'helpers/selectors';
+
+   s('#id');                     // document.querySelector('#id');
+   sAll('.class');               // document.querySelectorAll('.class');
+   sEl(element, '.child');       // element.querySelector('.child');
+   sElAll(element, '.childs');   // element.querySelectorAll('.childs');
+   ```
+
+-  #### [head](./helpers/head.js)
+
+   > <img src="./.github/assets/readme/vite.svg" >
+   > <img src="./.github/assets/readme/react.svg" >
+
+   -  An example of using:
+
+      ```js
+      import head from '#helpers/head';
+      import { favicon } from '../favicon.svg';
+
+      /**
+       * These functions check if an element already exists in head
+       * If exists, update element atribute, otherwise creates the element in head
+       **/
+      head.title('Home');
+      head.meta('theme-color', '#6c46bf');
+      head.link('canonical', 'https://site.com/');
+      head.favicon(favicon);
+      head.faviconBase64('data:image/png;base64,iVBO0KGN...ErkJg==');
+
+      /**
+       * This function creates any custom element in head
+       * Interesting to use for advanced properties, SEO, etc.
+       * @param {array} attributes is optional
+       * @param {string} textContent is optional
+       **/
+
+      const gtag = 'XXXXXXXXXX';
+
+      head.createElement({
+         element: 'script',
+         attributes: [
+            {
+               name: 'src',
+               value: `https://www.googletagmanager.com/gtag/js?id=G-${gtag}`,
+            },
+            {
+               name: 'async',
+            },
+         ],
+      });
+
+      head.createElement({
+         element: 'script',
+         textContext: `
+            window.dataLayer = window.dataLayer || []
+            function gtag() {
+               dataLayer.push(arguments)
+            }
+            gtag('js', new Date())
+            gtag('config', 'G-${gtag}')
+         `,
+      });
+      ```
+
+-  #### [setTime](./helpers/setTime.js)
+
+   > <img src="./.github/assets/readme/nodejs.svg" >
+   > <img src="./.github/assets/readme/vite.svg" >
+   > <img src="./.github/assets/readme/react.svg" >
+
+   -  An example of using:
+
+      ```js
+      import setTime from '#helpers/setTime';
+
+      setTime(1000); // 1000
+      setTime('1s'); // 1000
+      setTime('1m'); // 60000
+      setTime('1h'); // 3600000
+      ```
+
+<hr />
+
+### Credits
+
+| Contributors | GitHub                                                                             |
+| ------------ | ---------------------------------------------------------------------------------- |
+| Author       | [![wellwelwel](./.github/assets/readme/author.svg)](https://github.com/wellwelwel) |

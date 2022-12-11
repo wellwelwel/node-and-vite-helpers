@@ -17,7 +17,7 @@ jobs:
            with:
               node-version: '19'
               check-latest: true
-              registry-url: 'https://registry.npmjs.org'
+              registry-url: 'https://npm.pkg.github.com'
               scope: '@wellwelwel'
 
          - name: 📥 Publishing Package

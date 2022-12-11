@@ -18,6 +18,7 @@ jobs:
               node-version: '19'
               check-latest: true
               registry-url: 'https://registry.npmjs.org'
+              scope: '@wellwelwel'
 
          - name: 📥 Publishing Package
            run: npm i --ignore-scripts; npm config set access public; npm publish;

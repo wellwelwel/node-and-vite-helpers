@@ -1,8 +1,5 @@
 /**
  * ✅ Node | Vite | React
- *
- * cx(validCondition && 'class', 'normal-class', 'class1, class2')
- * => 'class normal-class class1 class2'
  **/
 
 const cx = (...args) =>

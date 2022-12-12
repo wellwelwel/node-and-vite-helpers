@@ -6,7 +6,7 @@
    "scripts": {
       "init": "npm i --ignore-scripts;",
       "init:update": "npm run init; npm run update;",
-      "update": "node './scripts/update-packages.js'; npm i --ignore-scripts; npm audit fix;",
+      "update": "npx npu; npm i --ignore-scripts; npm audit fix;",
       "update:patch": "npm run update; npm version patch --no-git-tag-version;",
       "update:minor": "npm run update; npm version minor --no-git-tag-version;",
       "update:major": "npm run update; npm version major --no-git-tag-version;"
@@ -15,6 +15,7 @@
       "html-entities": "^2.3.3"
    },
    "devDependencies": {
+      "packages-update": "^1.0.2",
       "prettier": "^2.8.1"
    },
    "license": "MIT",

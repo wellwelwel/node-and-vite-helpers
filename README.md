@@ -168,6 +168,29 @@
 
    </details>
 
+-  #### [empty](./src/helpers/empty.js)
+
+   > <img src="./.github/assets/readme/nodejs.svg" >
+   > <img src="./.github/assets/readme/vite.svg" >
+   > <img src="./.github/assets/readme/react.svg" >
+
+   <details open>
+   <summary>See an example</summary>
+
+   ```js
+   import { isEmpty, notEmpty } from 'node-and-vite-helpers';
+
+   isEmpty(''); // true
+   isEmpty('   '); // true
+   isEmpty('anything'); // false
+
+   notEmpty(''); // false
+   notEmpty('   '); // false
+   notEmpty('anything'); // true
+   ```
+
+   </details>
+
 <hr />
 
 ### Credits

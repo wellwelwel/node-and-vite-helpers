@@ -191,6 +191,32 @@
 
    </details>
 
+-  #### [forceArray](./src/helpers/forceArray.js)
+
+   > <img src="./.github/assets/readme/nodejs.svg" >
+   > <img src="./.github/assets/readme/vite.svg" >
+   > <img src="./.github/assets/readme/react.svg" >
+
+   <details open>
+   <summary>See an example</summary>
+
+   ```js
+   import { forceArray } from 'node-and-vite-helpers';
+
+   forceArray('string'); // [ 'string' ]
+   forceArray(1); // [ 1 ]
+   forceArray(true); // [ true ]
+   forceArray(false); // [ false ]
+   forceArray({}); // [ {} ]
+
+   forceArray(/* any */); // [ /* any */ ]
+   forceArray([
+      /* items */
+   ]); // [ /* items */ ]
+   ```
+
+   </details>
+
 <hr />
 
 ### Credits

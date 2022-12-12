@@ -1,11 +1,11 @@
-import h_cx from './helpers/doClass.js';
+import h_cx from './helpers/do-class.js';
 import * as h_empty from './helpers/empty.js';
-import h_forceArray from './helpers/forceArray.js';
+import h_forceArray from './helpers/force-array.js';
 import h_head from './helpers/head.js';
-import * as h_inputClean from './helpers/input-clean.js';
+import * as h_inputClean from './helpers/input.js';
 import * as h_selectors from './helpers/selectors.js';
-import h_setTime from './helpers/setTime.js';
-import h_tokenGenerate from './helpers/tokenGenerate.js';
+import h_setTime from './helpers/set-time.js';
+import h_tokenGenerate from './helpers/token-generate.js';
 import * as h_updatePackages from './helpers/get-latest-version.js';
 
 export const { isEmpty, notEmpty } = h_empty;

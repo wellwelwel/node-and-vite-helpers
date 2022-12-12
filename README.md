@@ -30,7 +30,7 @@
 
    </details>
 
--  #### [setTime](./src/helpers/setTime.js)
+-  #### [setTime](./src/helpers/set-time.js)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
    > <img src="./.github/assets/readme/vite.svg" >
@@ -53,7 +53,7 @@
 
    </details>
 
--  #### [doClass](./src/helpers/doClass.js)
+-  #### [doClass](./src/helpers/do-class.js)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
    > <img src="./.github/assets/readme/vite.svg" >
@@ -71,7 +71,7 @@
 
    </details>
 
--  #### [input](./src/helpers/input-clean.js)
+-  #### [input](./src/helpers/input.js)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
    > <img src="./.github/assets/readme/vite.svg" >
@@ -94,7 +94,7 @@
 
    </details>
 
--  #### [tokenGenerate](./src/helpers/tokenGenerate.js)
+-  #### [tokenGenerate](./src/helpers/token-generate.js)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
 
@@ -191,7 +191,7 @@
 
    </details>
 
--  #### [forceArray](./src/helpers/forceArray.js)
+-  #### [forceArray](./src/helpers/force-array.js)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
    > <img src="./.github/assets/readme/vite.svg" >

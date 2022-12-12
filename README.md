@@ -88,24 +88,30 @@
    xss('<div>🤔...</div>'); // &#129300;...
    xss('&lt;div&gt;&#129300;&lt;/div&gt;'); // &#129300;...
 
-   entities.encode('<div>🤔...</div>'); // &lt;div&gt;&#129300;&lt;/div&gt;
    entities.decode('&#129300;...'); // 🤔...
+   // entities.encode('<div>🤔...</div>'); // &lt;div&gt;&#129300;...&lt;/div&gt; ❌ Be careful!
+
+   // I: Trying broke decode xss 😈 //
+   (() => {
+      const input = '&lt;div&gt;👮&lt;/div&gt;';
+      const filteredInput = xss(input);
+
+      entities.decode(filteredInput); // 👮
+   })();
+
+   // II: Trying broke decode xss 👿 //
+   (() => {
+      const input = '&amp;lt;div&amp;gt;👮&amp;lt;/div&amp;gt;';
+      const filteredInput = xss(input);
+
+      entities.decode(filteredInput); // 👮
+   })();
    ```
 
-   </details>
+   ⚠️ Use carefully:
 
--  #### [tokenGenerate](./src/helpers/token-generate.js)
-
-   > <img src="./.github/assets/readme/nodejs.svg" >
-
-   <details open>
-   <summary>See an example</summary>
-
-   ```js
-   import { tokenGenerate } from 'node-and-vite-helpers';
-
-   tokenGenerate(8); // '45832c3f', 'fa3fe988', '749ecfaa', ...
-   ```
+   > The decoding depth of the "xss()" goes up to two stages, while the decoding for display ("entities.decode()"), has only one stage.  
+   > This means that even if someone insert more layers in an xss attack, it will display the xss content as text and not execute it.
 
    </details>
 
@@ -164,6 +170,21 @@
          gtag('config', 'G-${gtag}')
       `,
    });
+   ```
+
+   </details>
+
+-  #### [tokenGenerate](./src/helpers/token-generate.js)
+
+   > <img src="./.github/assets/readme/nodejs.svg" >
+
+   <details open>
+   <summary>See an example</summary>
+
+   ```js
+   import { tokenGenerate } from 'node-and-vite-helpers';
+
+   tokenGenerate(8); // '45832c3f', 'fa3fe988', '749ecfaa', ...
    ```
 
    </details>

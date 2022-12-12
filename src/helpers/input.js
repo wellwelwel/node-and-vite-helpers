@@ -15,4 +15,4 @@ export const entities = {
    encode: (string) => encode(string?.trim() || '', { mode: 'nonAsciiPrintable' }),
 };
 
-export const xss = (string) => entities.encode(striptags(String(string)))?.trim() || '';
+export const xss = (string) => entities.encode(striptags(entities.decode(String(string))))?.trim() || '';

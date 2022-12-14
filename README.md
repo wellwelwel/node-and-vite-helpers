@@ -30,6 +30,8 @@
 
    </details>
 
+   <hr />
+
 -  #### [setTime](./src/helpers/set-time.js)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
@@ -52,6 +54,8 @@
    ```
 
    </details>
+
+   <hr />
 
 -  #### [doClass](./src/helpers/do-class.js)
 
@@ -89,7 +93,6 @@
    xss('&lt;div&gt;&#129300;&lt;/div&gt;'); // &#129300;...
 
    entities.decode('&#129300;...'); // 🤔...
-   // entities.encode('<div>🤔...</div>'); // &lt;div&gt;&#129300;...&lt;/div&gt; ❌ Be careful!
 
    // I: Trying broke decode xss 😈 //
    (() => {
@@ -106,14 +109,28 @@
 
       entities.decode(filteredInput); // 👮
    })();
+
+   // Unsafe
+   (() => {
+      entities.encode('<div>🤔...</div>');
+      // &lt;div&gt;&#129300;...&lt;/div&gt;
+      // ❌ Be careful, consider using xss(string)
+
+      entities.decode('&lt;div&gt;🤔.../div&gt;', false);
+      // <div>🤔...</div>
+      // ❗️ Be careful, consider using entities.decode(string);
+   })();
    ```
 
-   ⚠️ Use carefully:
+   👮🏻‍♂️ Use carefully:
 
-   > The decoding depth of the "xss()" goes up to two stages, while the decoding for display ("entities.decode()"), has only one stage.  
-   > This means that even if someone insert more layers in an xss attack, it will display the xss content as text and not execute it.
+   -  The decoding depth of the `xss()` goes up to two stages.
+   -  The decoding for display `entities.decode()` has one stage and re-run `striptags` before returning the result.
+   -  This means that even if someone insert more layers in an xss attack, it will display the xss content as text and not execute it.
 
    </details>
+
+   <hr />
 
 -  #### [head](./src/helpers/head.js)
 
@@ -174,6 +191,8 @@
 
    </details>
 
+   <hr />
+
 -  #### [tokenGenerate](./src/helpers/token-generate.js)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
@@ -190,6 +209,8 @@
    ```
 
    </details>
+
+   <hr />
 
 -  #### [empty](./src/helpers/empty.js)
 
@@ -213,6 +234,8 @@
    ```
 
    </details>
+
+   <hr />
 
 -  #### [forceArray](./src/helpers/force-array.js)
 

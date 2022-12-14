@@ -12,8 +12,7 @@
       "update:major": "npm run update; npm version major --no-git-tag-version;"
    },
    "dependencies": {
-      "html-entities": "^2.3.3",
-      "randombytes": "^2.1.0"
+      "html-entities": "^2.3.3"
    },
    "devDependencies": {
       "packages-update": "^1.2.0",

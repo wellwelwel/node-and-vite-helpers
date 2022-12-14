@@ -2,11 +2,14 @@
  * ✅ Node | Vite | React
  */
 
-import randomBytes from 'randombytes';
+const generateRandomHexadecimal = () => Math.floor(Math.random() * 16).toString(16);
 
-const tokenGenerate = (size = 32) =>
-   randomBytes(Math.ceil(size / 2))
-      .toString('hex')
-      .substring(0, size);
+const tokenGenerate = (tokenSize = 32) => {
+   const token = [];
+
+   for (let size = 0; size < tokenSize; size++) token.push(generateRandomHexadecimal());
+
+   return token.join('');
+};
 
 export default tokenGenerate;

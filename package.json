@@ -1,7 +1,7 @@
 {
    "name": "node-and-vite-helpers",
    "main": "./src/index.js",
-   "version": "0.1.19",
+   "version": "0.1.20",
    "type": "module",
    "scripts": {
       "init": "npm i --ignore-scripts;",

@@ -177,6 +177,8 @@
 -  #### [tokenGenerate](./src/helpers/token-generate.js)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
+   > <img src="./.github/assets/readme/vite.svg" >
+   > <img src="./.github/assets/readme/react.svg" >
 
    <details open>
    <summary>See an example</summary>

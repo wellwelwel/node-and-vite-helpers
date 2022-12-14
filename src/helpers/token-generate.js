@@ -1,9 +1,8 @@
 /**
- * ✅ Node
- * ❌ Vite | React
+ * ✅ Node | Vite | React
  */
 
-import { randomBytes } from 'crypto';
+import randomBytes from 'randombytes';
 
 const tokenGenerate = (size = 32) =>
    randomBytes(Math.ceil(size / 2))

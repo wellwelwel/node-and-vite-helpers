@@ -165,12 +165,12 @@
    head.link('canonical', 'https://site.com/');
    head.favicon(favicon);
    head.faviconBase64('data:image/png;base64,iVBO0KGN...ErkJg==');
+   ```
 
+   ```javascript
    /**
     * This function creates any custom element in head
     * Interesting to use for advanced properties, SEO, etc.
-    * @param {array} attributes is optional
-    * @param {string} textContent is optional
     **/
 
    const gtag = 'XXXXXXXXXX';

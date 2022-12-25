@@ -109,7 +109,9 @@
 
       entities.decode(filteredInput); // 👮
    })();
+   ```
 
+   ```javascript
    // II: Trying broke decode xss 👿 //
    (() => {
       const input = '&amp;lt;div&amp;gt;👮&amp;lt;/div&amp;gt;';

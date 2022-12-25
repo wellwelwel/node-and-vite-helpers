@@ -72,7 +72,7 @@
    ```js
    import { cx } from 'node-and-vite-helpers';
 
-   cx(validCond && 'active');       // 'active
+   cx(validCond && 'active');       // 'active'
    cx(invalidCond && 'active');     // ''
    cx('class1', 'class2 class3');   // 'class1 class2 class3'
    ```

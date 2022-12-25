@@ -31,7 +31,7 @@
 
    </details>
 
-   <hr />
+<hr />
 
 -  #### [setTime](./src/helpers/set-time.ts)
 
@@ -57,7 +57,7 @@
 
    </details>
 
-   <hr />
+<hr />
 
 -  #### [doClass](./src/helpers/do-class.ts)
 
@@ -76,6 +76,8 @@
    ```
 
    </details>
+
+<hr />
 
 -  #### [input](./src/helpers/input.ts)
 
@@ -132,7 +134,7 @@
 
    </details>
 
-   <hr />
+<hr />
 
 -  #### [head](./src/helpers/head.ts)
 
@@ -193,7 +195,7 @@
 
    </details>
 
-   <hr />
+<hr />
 
 -  #### [tokenGenerate](./src/helpers/token-generate.ts)
 
@@ -212,7 +214,7 @@
 
    </details>
 
-   <hr />
+<hr />
 
 -  #### [empty](./src/helpers/empty.ts)
 
@@ -238,7 +240,7 @@
 
    </details>
 
-   <hr />
+<hr />
 
 -  #### [forceArray](./src/helpers/force-array.ts)
 

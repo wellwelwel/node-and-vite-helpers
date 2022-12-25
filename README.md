@@ -11,7 +11,7 @@
 
 ### 💡 Helpers
 
--  #### [selectors](./src/helpers/selectors.js)
+-  #### [selectors](./src/helpers/selectors.ts)
 
    > <img src="./.github/assets/readme/vite.svg" >
    > <img src="./.github/assets/readme/react.svg" >
@@ -19,20 +19,21 @@
    <details open>
    <summary>See an example</summary>
 
+<!-- prettier-ignore -->
    ```js
    import { s, sAll, sEl, sElAll } from 'node-and-vite-helpers';
 
-   s('#id'); // document.querySelector('#id');
-   sAll('.class'); // document.querySelectorAll('.class');
-   sEl(element, '.child'); // element.querySelector('.child');
-   sElAll(element, '.childs'); // element.querySelectorAll('.childs');
+   s('#id');                     // document.querySelector('#id');
+   sAll('.class');               // document.querySelectorAll('.class');
+   sEl(element, '.child');       // element.querySelector('.child');
+   sElAll(element, '.childs');   // element.querySelectorAll('.childs');
    ```
 
    </details>
 
    <hr />
 
--  #### [setTime](./src/helpers/set-time.js)
+-  #### [setTime](./src/helpers/set-time.ts)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
    > <img src="./.github/assets/readme/vite.svg" >
@@ -41,23 +42,24 @@
    <details open>
    <summary>See an example</summary>
 
+<!-- prettier-ignore -->
    ```js
    import { setTime } from 'node-and-vite-helpers';
 
-   setTime(1000); // 1000
-   setTime('1000'); // 1000
+   setTime(1000);    // 1000
+   setTime('1000');  // 1000
 
-   setTime('1s'); // 1000
-   setTime('1m'); // 60000
-   setTime('1h'); // 3600000
-   setTime('1d'); // 86400000
+   setTime('1s');    // 1000
+   setTime('1m');    // 60000
+   setTime('1h');    // 3600000
+   setTime('1d');    // 86400000
    ```
 
    </details>
 
    <hr />
 
--  #### [doClass](./src/helpers/do-class.js)
+-  #### [doClass](./src/helpers/do-class.ts)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
    > <img src="./.github/assets/readme/vite.svg" >
@@ -69,13 +71,13 @@
    ```js
    import { cx } from 'node-and-vite-helpers';
 
-   cx(validCondition && 'active', 'class1 class2', invalidCondition && 'hide');
+   cx(validCond && 'active', 'class1 class2', invalidCond && 'hide');
    // 'active class1 class2'
    ```
 
    </details>
 
--  #### [input](./src/helpers/input.js)
+-  #### [input](./src/helpers/input.ts)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
    > <img src="./.github/assets/readme/vite.svg" >
@@ -132,7 +134,7 @@
 
    <hr />
 
--  #### [head](./src/helpers/head.js)
+-  #### [head](./src/helpers/head.ts)
 
    > <img src="./.github/assets/readme/vite.svg" >
    > <img src="./.github/assets/readme/react.svg" >
@@ -193,7 +195,7 @@
 
    <hr />
 
--  #### [tokenGenerate](./src/helpers/token-generate.js)
+-  #### [tokenGenerate](./src/helpers/token-generate.ts)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
    > <img src="./.github/assets/readme/vite.svg" >
@@ -212,7 +214,7 @@
 
    <hr />
 
--  #### [empty](./src/helpers/empty.js)
+-  #### [empty](./src/helpers/empty.ts)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
    > <img src="./.github/assets/readme/vite.svg" >
@@ -221,23 +223,24 @@
    <details open>
    <summary>See an example</summary>
 
+<!-- prettier-ignore -->
    ```js
    import { isEmpty, notEmpty } from 'node-and-vite-helpers';
 
-   isEmpty(''); // true
-   isEmpty('   '); // true
-   isEmpty('anything'); // false
+   isEmpty('');            // true
+   isEmpty('   ');         // true
+   isEmpty('anything');    // false
 
-   notEmpty(''); // false
-   notEmpty('   '); // false
-   notEmpty('anything'); // true
+   notEmpty('');           // false
+   notEmpty('   ');        // false
+   notEmpty('anything');   // true
    ```
 
    </details>
 
    <hr />
 
--  #### [forceArray](./src/helpers/force-array.js)
+-  #### [forceArray](./src/helpers/force-array.ts)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
    > <img src="./.github/assets/readme/vite.svg" >
@@ -246,19 +249,18 @@
    <details open>
    <summary>See an example</summary>
 
+<!-- prettier-ignore -->
    ```js
    import { forceArray } from 'node-and-vite-helpers';
 
-   forceArray('string'); // [ 'string' ]
-   forceArray(1); // [ 1 ]
-   forceArray(true); // [ true ]
-   forceArray(false); // [ false ]
-   forceArray({}); // [ {} ]
+   forceArray('string');         // [ 'string' ]
+   forceArray(1);                // [ 1 ]
+   forceArray(true);             // [ true ]
+   forceArray(false);            // [ false ]
+   forceArray({});               // [ {} ]
+   forceArray(/* any */);        // [ /* any */ ]
 
-   forceArray(/* any */); // [ /* any */ ]
-   forceArray([
-      /* items */
-   ]); // [ /* items */ ]
+   forceArray([ /* items */ ]);  // [ /* items */ ]
    ```
 
    </details>

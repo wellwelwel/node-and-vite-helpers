@@ -20,7 +20,7 @@
    <summary>See an example</summary>
 
 <!-- prettier-ignore -->
-   ```js
+   ```javascript
    import { s, sAll, sEl, sElAll } from 'node-and-vite-helpers';
 
    s('#id');                     // document.querySelector('#id');
@@ -43,7 +43,7 @@
    <summary>See an example</summary>
 
 <!-- prettier-ignore -->
-   ```js
+   ```javascript
    import { setTime } from 'node-and-vite-helpers';
 
    setTime(1000);    // 1000
@@ -69,7 +69,7 @@
    <summary>See an example</summary>
 
 <!-- prettier-ignore -->
-   ```js
+   ```javascript
    import { cx } from 'node-and-vite-helpers';
 
    cx('c1', 'c2 c3');            // 'c1 c2 c3'
@@ -90,7 +90,7 @@
    <details open>
    <summary>See an example</summary>
 
-   ```js
+   ```javascript
    import { striptags, entities, xss } from 'node-and-vite-helpers';
 
    striptags('<div>🤔...</div>'); // 🤔...
@@ -99,7 +99,9 @@
    xss('&lt;div&gt;&#129300;&lt;/div&gt;'); // &#129300;...
 
    entities.decode('&#129300;...'); // 🤔...
+   ```
 
+   ```javascript
    // I: Trying broke decode xss 😈 //
    (() => {
       const input = '&lt;div&gt;👮&lt;/div&gt;';
@@ -115,7 +117,9 @@
 
       entities.decode(filteredInput); // 👮
    })();
+   ```
 
+   ```javascript
    // Unsafe
    (() => {
       entities.encode('<div>🤔...</div>');
@@ -146,7 +150,7 @@
    <details open>
    <summary>See an example</summary>
 
-   ```js
+   ```javascript
    import { head } from 'node-and-vite-helpers';
    import favicon from '../favicon.svg';
 
@@ -208,7 +212,7 @@
    <details open>
    <summary>See an example</summary>
 
-   ```js
+   ```javascript
    import { tokenGenerate } from 'node-and-vite-helpers';
 
    tokenGenerate(8); // '45832c3f', 'fa3fe988', '749ecfaa', ...
@@ -228,7 +232,7 @@
    <summary>See an example</summary>
 
 <!-- prettier-ignore -->
-   ```js
+   ```javascript
    import { isEmpty, notEmpty } from 'node-and-vite-helpers';
 
    isEmpty('');            // true
@@ -254,7 +258,7 @@
    <summary>See an example</summary>
 
 <!-- prettier-ignore -->
-   ```js
+   ```javascript
    import { forceArray } from 'node-and-vite-helpers';
 
    forceArray('string');         // [ 'string' ]

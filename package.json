@@ -1,9 +1,14 @@
 {
    "name": "node-and-vite-helpers",
-   "main": "./src/index.js",
+   "main": "./index.mjs",
    "version": "1.0.0",
    "type": "module",
+   "module": "./index.mjs",
+   "types": "./index.d.ts",
+   "typings": "./index.d.ts",
    "scripts": {
+      "prebuild": "rm -rf './index.d.ts' './helpers' './index.cjs' './index.mjs';",
+      "build": "npx rollup -c;",
       "init": "npm i --ignore-scripts;",
       "init:update": "npm run init; npm run update;",
       "update": "npx npu; npm i --ignore-scripts; npm audit fix;",
@@ -11,12 +16,15 @@
       "update:minor": "npm run update; npm version minor --no-git-tag-version;",
       "update:major": "npm run update; npm version major --no-git-tag-version;"
    },
-   "dependencies": {
-      "html-entities": "^2.3.3"
-   },
    "devDependencies": {
+      "@rollup/plugin-commonjs": "^24.0.0",
+      "@rollup/plugin-node-resolve": "^15.0.1",
+      "@rollup/plugin-typescript": "^10.0.1",
+      "html-entities": "^2.3.3",
       "packages-update": "^1.2.1",
-      "prettier": "^2.8.1"
+      "prettier": "^2.8.1",
+      "rollup": "^3.8.1",
+      "tslib": "^2.4.1"
    },
    "license": "MIT",
    "repository": {
@@ -44,5 +52,18 @@
    "engines": {
       "node": ">=14.18.0 || >=16.0.0",
       "npm": ">=7.0.2"
-   }
+   },
+   "exports": {
+      ".": {
+         "require": "./index.cjs",
+         "import": "./index.mjs"
+      }
+   },
+   "files": [
+      "index.cjs",
+      "index.mjs",
+      "index.d.ts",
+      "helpers",
+      "samples"
+   ]
 }

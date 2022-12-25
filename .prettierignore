@@ -1,5 +1,4 @@
 node_modules
-dist
-docker/app
-docker/backup
-tests
+*.d.ts
+*.cjs
+*.mjs

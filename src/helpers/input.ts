@@ -4,7 +4,7 @@
 
 import { decode, encode } from 'html-entities';
 
-export const striptags = (string, secure = true) =>
+export const striptags = (string: string, secure = true): string =>
    (secure
       ? decode(String(string?.trim() || ''))
            .replace(/(<([^>]+)>)/gm, '')
@@ -16,9 +16,10 @@ export const striptags = (string, secure = true) =>
            ?.trim() || '') || '';
 
 export const entities = {
-   decode: (string, secure = true) =>
+   decode: (string: string, secure = true): string =>
       (secure ? striptags(decode(string?.trim() || ''), false) : decode(string?.trim() || '')) || '',
-   encode: (string) => encode(string?.trim() || '', { mode: 'nonAsciiPrintable' }) || '',
+   encode: (string: string) => encode(string?.trim() || '', { mode: 'nonAsciiPrintable' }) || '',
 };
 
-export const xss = (string) => entities.encode(striptags(entities.decode(String(string))))?.trim() || '';
+export const xss = (string: string): string =>
+   entities.encode(striptags(entities.decode(String(string))))?.trim() || '';

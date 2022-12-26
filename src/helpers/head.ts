@@ -3,7 +3,7 @@
  * ❌ Node
  */
 
-import { s } from './selectors';
+import { s } from './selectors.js';
 
 const mimes = {
    gif: 'image/gif',

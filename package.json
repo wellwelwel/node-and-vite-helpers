@@ -23,7 +23,7 @@
       "html-entities": "^2.3.3",
       "packages-update": "^1.2.1",
       "prettier": "^2.8.1",
-      "rollup": "^3.8.1",
+      "rollup": "^3.9.1",
       "tslib": "^2.4.1"
    },
    "license": "MIT",

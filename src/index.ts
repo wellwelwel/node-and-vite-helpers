@@ -6,6 +6,7 @@ import { entities, striptags, xss } from './helpers/input.js';
 import { s, sAll, sEl, sElAll } from './helpers/selectors.js';
 import { setTime } from './helpers/set-time.js';
 import { tokenGenerate } from './helpers/token-generate.js';
+import dates from './helpers/dates.js';
 
 export {
    cx,
@@ -22,4 +23,5 @@ export {
    sElAll,
    setTime,
    tokenGenerate,
+   dates,
 };

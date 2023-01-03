@@ -58,12 +58,14 @@
          "types": "./index.d.ts",
          "require": "./index.cjs",
          "import": "./index.mjs"
-      }
+      },
+      "./types": "./types.d.ts"
    },
    "files": [
       "index.cjs",
       "index.mjs",
       "index.d.ts",
+      "types.d.ts",
       "helpers",
       "samples"
    ]

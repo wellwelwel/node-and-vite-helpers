@@ -427,7 +427,134 @@ const tokenGenerate = (tokenSize = 32) => {
     return token.join('');
 };
 
+let defaultLocale = 'pt-BR';
+let defaultTimezone = 'America/Sao_Paulo';
+let holidays = [
+    '01/01',
+    '02/20',
+    '02/21',
+    '04/07',
+    '04/21',
+    '05/01',
+    '06/08',
+    '09/07',
+    '10/12',
+    '11/02',
+    '11/15',
+    '12/25',
+    '12/31', // Confraternização Universal
+];
+const setLocale = (local) => {
+    defaultLocale = local;
+};
+const setTimezone = (timezone) => {
+    defaultTimezone = timezone;
+};
+const setHolidays = (holidaysList) => {
+    holidays.length = 0;
+    Object.assign(holidays, [...holidaysList]);
+    return holidays;
+};
+const toLocalDate = (date, options) => {
+    const timeZone = options?.timeZone || defaultTimezone;
+    const dateUTC = date.toLocaleString('eu', {
+        timeZone,
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+    });
+    const [getDate, getTime] = dateUTC.split(' ');
+    let gmtDate = '';
+    gmtDate += getDate.replace(/\//g, '-');
+    gmtDate += 'T';
+    gmtDate += getTime;
+    gmtDate += '.';
+    gmtDate += '000';
+    gmtDate += 'Z';
+    return new Date(gmtDate);
+};
+const pastDate = (date, days, options) => {
+    const dateClone = new Date(date);
+    const baseDate = new Date(dateClone.getTime());
+    const newDate = new Date(dateClone.setDate(baseDate.getDate() - days));
+    const timeZone = options?.timeZone || defaultTimezone;
+    return toLocalDate(newDate, { timeZone });
+};
+const futureDate = (date, days, options) => {
+    const dateClone = new Date(date);
+    const baseDate = new Date(dateClone.getTime());
+    const newDate = new Date(dateClone.setDate(baseDate.getDate() + days));
+    const timeZone = options?.timeZone || defaultTimezone;
+    return toLocalDate(newDate, { timeZone });
+};
+const toLocaleString = (date, options) => {
+    const local = options?.local || defaultLocale;
+    const timeZone = options?.timeZone || defaultTimezone;
+    return new Date(date).toLocaleString(local, { timeZone });
+};
+const toYodaString = (date, options) => {
+    const timeZone = options?.timeZone || defaultTimezone;
+    const date8601 = toLocalDate(date, { timeZone }).toISOString();
+    const ISO = date8601.replace(/\.[0-9]{3}Z$/, '').replace(/T/, ' ');
+    return ISO;
+};
+const isEqual = (date, compareDate) => date.getTime() === compareDate.getTime();
+const isMinor = (date, compareDate) => date.getTime() < compareDate.getTime();
+const isMajor = (date, compareDate) => date.getTime() > compareDate.getTime();
+const isMinorOrEqual = (date, compareDate) => date.getTime() >= compareDate.getTime();
+const isMajorOrEqual = (date, compareDate) => date.getTime() <= compareDate.getTime();
+const parse = (date) => {
+    return {
+        year: date.getFullYear(),
+        month: date.getMonth() + 1,
+        day: date.getDate(),
+        hours: date.getHours(),
+        minutes: date.getMinutes(),
+        seconds: date.getSeconds(),
+    };
+};
+const getDiff = (date, compareDate) => {
+    const situation = isMajor(date, compareDate) ? 'passed' : 'remaining';
+    const milliseconds = Math.abs(date.getTime() - compareDate.getTime());
+    const seconds = Math.floor((milliseconds / 1000) % 60);
+    const minutes = Math.floor((milliseconds / 1000 / 60) % 60);
+    const hours = Math.floor((milliseconds / (1000 * 60 * 60)) % 24);
+    const days = Math.floor((milliseconds / (1000 * 60 * 60 * 24)) % 30);
+    const months = Math.floor((milliseconds / (1000 * 60 * 60 * 24 * 30)) % 12);
+    const years = Math.floor(milliseconds / (1000 * 60 * 60 * 24 * 365));
+    return {
+        situation,
+        years,
+        months,
+        days,
+        hours,
+        minutes,
+        seconds,
+    };
+};
+var dates = {
+    toLocaleString,
+    toYodaString,
+    pastDate,
+    futureDate,
+    toLocalDate,
+    isEqual,
+    isMinor,
+    isMajor,
+    isMinorOrEqual,
+    isMajorOrEqual,
+    parse,
+    getDiff,
+    setLocale,
+    setTimezone,
+    setHolidays,
+};
+
 exports.cx = cx;
+exports.dates = dates;
 exports.entities = entities;
 exports.forceArray = forceArray;
 exports.head = head;

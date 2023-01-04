@@ -17,7 +17,7 @@
    > <img src="./.github/assets/readme/react.svg" >
 
    <details open>
-   <summary>See an example</summary>
+   <summary>See some examples</summary>
 
    <!-- prettier-ignore -->
       ```javascript
@@ -40,7 +40,7 @@
    > <img src="./.github/assets/readme/react.svg" >
 
    <details open>
-   <summary>See an example</summary>
+   <summary>See some examples</summary>
 
    <!-- prettier-ignore -->
       ```javascript
@@ -66,7 +66,7 @@
    > <img src="./.github/assets/readme/react.svg" >
 
    <details open>
-   <summary>See an example</summary>
+   <summary>See some examples</summary>
 
    <!-- prettier-ignore -->
       ```javascript
@@ -88,7 +88,7 @@
    > <img src="./.github/assets/readme/react.svg" >
 
    <details open>
-   <summary>See an example</summary>
+   <summary>See some examples</summary>
 
    ```javascript
    import { striptags, entities, xss } from 'node-and-vite-helpers';
@@ -103,35 +103,32 @@
 
    ```javascript
    // I: Trying broke decode xss 😈 //
-   (() => {
-      const input = '&lt;div&gt;👮&lt;/div&gt;';
-      const filteredInput = xss(input);
 
-      entities.decode(filteredInput); // 👮
-   })();
+   const input = '&lt;div&gt;👮&lt;/div&gt;';
+   const filteredInput = xss(input);
+
+   entities.decode(filteredInput); // 👮
    ```
 
    ```javascript
    // II: Trying broke decode xss 👿 //
-   (() => {
-      const input = '&amp;lt;div&amp;gt;👮&amp;lt;/div&amp;gt;';
-      const filteredInput = xss(input);
 
-      entities.decode(filteredInput); // 👮
-   })();
+   const input = '&amp;lt;div&amp;gt;👮&amp;lt;/div&amp;gt;';
+   const filteredInput = xss(input);
+
+   entities.decode(filteredInput); // 👮
    ```
 
    ```javascript
-   // Unsafe
-   (() => {
-      entities.encode('<div>🤔...</div>');
-      // &lt;div&gt;&#129300;...&lt;/div&gt;
-      // ❌ Be careful, consider using xss(string)
+   // Unsafe!
 
-      entities.decode('&lt;div&gt;🤔.../div&gt;', false);
-      // <div>🤔...</div>
-      // ❗️ Be careful, consider using entities.decode(string);
-   })();
+   entities.encode('<div>🤔...</div>');
+   // &lt;div&gt;&#129300;...&lt;/div&gt;
+   // ❌ Be careful, consider using xss(string)
+
+   entities.decode('&lt;div&gt;🤔.../div&gt;', false);
+   // <div>🤔...</div>
+   // ❗️ Be careful, consider using entities.decode(string);
    ```
 
    👮🏻‍♂️ Use carefully:
@@ -150,7 +147,7 @@
    > <img src="./.github/assets/readme/react.svg" >
 
    <details open>
-   <summary>See an example</summary>
+   <summary>See some examples</summary>
 
    ```javascript
    import { head } from 'node-and-vite-helpers';
@@ -205,6 +202,91 @@
 
 <hr />
 
+-  #### [dates](./src/helpers/dates.ts)
+
+   > <img src="./.github/assets/readme/nodejs.svg" >
+   > <img src="./.github/assets/readme/vite.svg" >
+   > <img src="./.github/assets/readme/react.svg" >
+
+   <details open>
+   <summary>See some examples</summary>
+
+   ```javascript
+   import { dates } from 'node-and-vite-helpers';
+
+   dates.set.locale('pt-BR');
+   dates.set.timeZone('America/Sao_Paulo');
+   ```
+
+   ```javascript
+   // Preparing examples
+   const dateA = new Date('2023-01-02T05:06:42.041Z');
+   const dateB = new Date('2023-01-04T04:10:35.208Z');
+   const christmasEve = new Date('2023-12-24 00:00');
+   ```
+
+   ```javascript
+   dates.toYodaString(dateA);
+   // 2023-01-02 02:06:42
+
+   dates.toLocaleString(dateA);
+   // 02/01/2023 02:06:42
+   ```
+
+   ```javascript
+   dates.toLocalDate(dateA);
+   // 2023-01-02T02:06:42.000Z
+
+   dates.pastDate(dateA, 1);
+   // 2023-01-01T02:06:42.000Z
+
+   dates.futureDate(dateA, 1);
+   // 2023-01-03T02:06:42.000Z
+
+   dates.getBusinessDay(christmasEve, 1);
+   // 2023-12-26T00:00:00.000Z
+
+   dates.getBusinessDay(christmasEve, 2));
+   // 2023-12-27T00:00:00.000Z
+   ```
+
+   ```javascript
+   dates.parse(dateA);
+   // { year: 2023, month: 1, day: 2, hours: 2, minutes: 6, seconds: 42 }
+
+   dates.getDiff(dateA, dateB);
+   // { situation: 'remaining', years: 0, months: 0, days: 1, hours: 23, minutes: 3, seconds: 53 }
+   ```
+
+   ```javascript
+   // Another functions
+
+   dates.isHoliday();
+   dates.isWeekend();
+   dates.isEqual();
+   dates.isMinor();
+   dates.isMajor();
+   dates.isMinorOrEqual();
+   dates.isMajorOrEqual();
+   ```
+
+   -  You can customize `timeZone` by overwriting the default param:
+
+      ```javascript
+      dates.toYodaString(dateA, { timeZone: 'UTC' }));
+      // 2023-01-02 05:06:42
+
+      dates.toLocaleString(dateA, { local: 'en-US', timeZone: 'America/New_York' }));
+      // 1/2/2023, 12:06:42 AM
+      ```
+
+      -  Ao customizar o `timeZone` é importante saber a `timeZone` de origem.
+      -  Both `local` and `timeZone` options has type suggestions 🤹
+
+   </details>
+
+<hr />
+
 -  #### [tokenGenerate](./src/helpers/token-generate.ts)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
@@ -231,7 +313,7 @@
    > <img src="./.github/assets/readme/react.svg" >
 
    <details>
-   <summary>See an example</summary>
+   <summary>See some examples</summary>
 
    <!-- prettier-ignore -->
       ```javascript
@@ -257,7 +339,7 @@
    > <img src="./.github/assets/readme/react.svg" >
 
    <details>
-   <summary>See an example</summary>
+   <summary>See some examples</summary>
 
    <!-- prettier-ignore -->
       ```javascript

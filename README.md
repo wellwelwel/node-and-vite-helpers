@@ -160,7 +160,7 @@
    ```
 
    ```javascript
-   // Preparing examples
+   // Preparing examples 🤹
    const dateA = new Date('2023-01-02T05:06:42.041Z');
    const dateB = new Date('2023-01-04T04:10:35.208Z');
    const christmasEve = new Date('2023-12-24 00:00');
@@ -251,7 +251,7 @@
       // 1/2/2023, 12:06:42 AM
       ```
 
-   -  Both `local` and `timeZone` options has type suggestions 🤹
+   -  Both `locale` and `timeZone` options have typing suggestions 📝
 
    </details>
 

@@ -1,4 +1,7 @@
-import { Locales, Timezones } from '../types.js';
+/**
+ * ✅ Node | Vite | React
+ */
+import { Locales, Timezones, Months } from '../types.js';
 declare const _default: {
     toLocaleString: (date: Date, options?: {
         local?: Locales | undefined;
@@ -38,8 +41,24 @@ declare const _default: {
         minutes: number;
         seconds: number;
     };
-    setLocale: (local: Locales) => void;
-    setTimezone: (timezone: Timezones) => void;
-    setHolidays: (holidaysList: string[]) => string[];
+    isWeekend: (date: Date, options?: {
+        timeZone?: Timezones | undefined;
+    } | undefined) => boolean;
+    isHoliday: (date: Date) => boolean;
+    getBusinessDay: (date: Date, days?: number, options?: {
+        timeZone?: Timezones | undefined;
+    } | undefined) => Date;
+    set: {
+        locale: (local: Locales) => void;
+        timeZone: (timeZone: Timezones) => void;
+        comercailHours: (comercailHours: [string, string]) => void;
+        holidays: (holidays: Months) => void;
+    };
+    get: {
+        locale: () => Locales;
+        timeZone: () => Timezones;
+        comercailHours: () => string[];
+        holidays: () => Months;
+    };
 };
 export default _default;

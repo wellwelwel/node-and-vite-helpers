@@ -1,36 +1,48 @@
-import { Locales, Timezones } from '../types.js';
+/**
+ * ✅ Node | Vite | React
+ */
+
+import { Locales, Timezones, Months } from '../types.js';
 
 let defaultLocale: Locales = 'pt-BR';
 let defaultTimezone: Timezones = 'America/Sao_Paulo';
-let holidays: string[] = [
-   '01/01', // Confraternização Universal
-   '02/20', // Carnaval
-   '02/21', // Carnaval
-   '04/07', // Paixão de Cristo
-   '04/21', // Tiradentes
-   '05/01', // Dia do Trabalho
-   '06/08', // Corpus Christi
-   '09/07', // Independência do Brasil
-   '10/12', // Nossa Sr.a Aparecida - Padroeira do Brasil
-   '11/02', // Finados
-   '11/15', // Proclamação da República
-   '12/25', // Natal
-   '12/31', // Confraternização Universal
-];
-
-const setLocale = (local: Locales) => {
-   defaultLocale = local;
+let defaultComercialHours = ['08:00', '18:00'];
+let defaultHolidays: Months = {
+   // https://www.in.gov.br/web/dou/-/portaria-me-n-11.090-de-27-de-dezembro-de-2022-454503426
+   1: [1, 2],
+   2: [20, 21],
+   3: [],
+   4: [7, 21],
+   5: [1],
+   6: [8],
+   7: [],
+   8: [],
+   9: [7],
+   10: [12],
+   11: [2, 15],
+   12: [24, 25, 31],
 };
 
-const setTimezone = (timezone: Timezones) => {
-   defaultTimezone = timezone;
+const set = {
+   locale: (local: Locales) => {
+      defaultLocale = local;
+   },
+   timeZone: (timeZone: Timezones) => {
+      defaultTimezone = timeZone;
+   },
+   comercailHours: (comercailHours: [string, string]) => {
+      defaultComercialHours = comercailHours;
+   },
+   holidays: (holidays: Months) => {
+      defaultHolidays = holidays;
+   },
 };
 
-const setHolidays = (holidaysList: string[]) => {
-   holidays.length = 0;
-   Object.assign(holidays, [...holidaysList]);
-
-   return holidays;
+const get = {
+   locale: () => defaultLocale,
+   timeZone: () => defaultTimezone,
+   comercailHours: () => defaultComercialHours,
+   holidays: () => defaultHolidays,
 };
 
 const toLocalDate = (date: Date, options?: { timeZone?: Timezones }): Date => {
@@ -146,6 +158,39 @@ const getDiff = (
    };
 };
 
+const isWeekend = (date: Date, options?: { timeZone?: Timezones }) => {
+   const timeZone = options?.timeZone || defaultTimezone;
+   const weekday = date.toLocaleDateString('en-US', { weekday: 'long', timeZone });
+
+   return /saturday|sunday/gi.test(weekday);
+};
+
+const isHoliday = (date: Date) => {
+   const day = date.getDate();
+   const month = date.getMonth() + 1;
+   const holiday = defaultHolidays?.[month as keyof Months] || false;
+
+   if (!holiday) return false;
+
+   return holiday.includes(day);
+};
+
+const getNextBusinessDay = (date: Date): Date => {
+   let nextWorkDay = futureDate(new Date(date), 1, { timeZone: 'UTC' });
+
+   return isWeekend(nextWorkDay) || isHoliday(nextWorkDay) ? getNextBusinessDay(nextWorkDay) : nextWorkDay;
+};
+
+const getBusinessDay = (date: Date, days: number = 1, options?: { timeZone?: Timezones }) => {
+   const timeZone = options?.timeZone || defaultTimezone;
+
+   let searchWorkDate = new Date(date);
+
+   for (let i = 0; i < days; i++) searchWorkDate = getNextBusinessDay(searchWorkDate);
+
+   return toLocalDate(searchWorkDate, { timeZone });
+};
+
 export default {
    toLocaleString,
    toYodaString,
@@ -159,7 +204,10 @@ export default {
    isMajorOrEqual,
    parse,
    getDiff,
-   setLocale,
-   setTimezone,
-   setHolidays,
+   isWeekend,
+   isHoliday,
+   getBusinessDay,
+
+   set,
+   get,
 };

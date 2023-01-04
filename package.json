@@ -34,6 +34,7 @@
    "keywords": [
       "helpers",
       "utils",
+      "modules",
       "node",
       "vite",
       "reactjs",
@@ -41,7 +42,9 @@
       "input",
       "sanitizer",
       "xss",
-      "head"
+      "head",
+      "date",
+      "time"
    ],
    "author": "https://github.com/wellwelwel",
    "bugs": {

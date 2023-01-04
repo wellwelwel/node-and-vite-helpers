@@ -154,7 +154,7 @@
    ```javascript
    import { dates } from 'node-and-vite-helpers';
 
-   // defaults
+   // defaults 🔓
    dates.set.locale('pt-BR');
    dates.set.timeZone('America/Sao_Paulo');
    ```

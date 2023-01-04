@@ -252,6 +252,7 @@
       ```
 
    -  Both `locale` and `timeZone` options have typing suggestions 📝
+   -  This module assumes that you know the **time zone** from origin dates 🎓
 
    </details>
 

@@ -312,7 +312,7 @@
 
    -  The decoding depth of the `xss()` goes up to two stages.
    -  The decoding for display `entities.decode()` has one stage and re-run `striptags` before returning the result.
-   -  This means that even if someone insert more layers in an xss attack, it will display the xss content as text and not execute it.
+   -  This means that even if someone insert more layers in a xss attack, it will display the xss content as text and not execute it.
 
    </details>
 

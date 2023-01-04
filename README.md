@@ -227,32 +227,32 @@
    dates.isBetween(startDate, date, endDate);
    ```
 
-   -  You can set custom **holidays**:
-      <!-- prettier-ignore -->
-         ```javascript
-         const holidays = {
-            1: [ 1, 2 ],
-            // ...
-            12: [ 25, 31 ],
-         };
-
-         dates.set.holidays(holidays);
-         ```
-
-      -  You can see the default holidays in [defaultHolidays](./src/helpers/dates.ts#L10)
-
-   -  You can customize `timeZone` by overwriting the default params:
-
+-  You can set custom **holidays**:
+   <!-- prettier-ignore -->
       ```javascript
-      dates.toYodaString(dateA, { timeZone: 'UTC' }));
-      // 2023-01-02 05:06:42
+      const holidays = {
+         1: [ 1, 2 ],
+         // ...
+         12: [ 25, 31 ],
+      };
 
-      dates.toLocaleString(dateA, { locale: 'en-US', timeZone: 'America/New_York' }));
-      // 1/2/2023, 12:06:42 AM
+      dates.set.holidays(holidays);
       ```
 
-   -  Both `locale` and `timeZone` options have typing suggestions 📝
-   -  This module assumes that you know the **time zone** from origin dates 🎓
+   -  You can see the default holidays in [defaultHolidays](./src/helpers/dates.ts#L10)
+
+-  You can customize `timeZone` by overwriting the default params:
+
+   ```javascript
+   dates.toYodaString(dateA, { timeZone: 'UTC' }));
+   // 2023-01-02 05:06:42
+
+   dates.toLocaleString(dateA, { locale: 'en-US', timeZone: 'America/New_York' }));
+   // 1/2/2023, 12:06:42 AM
+   ```
+
+-  Both `locale` and `timeZone` options have typing suggestions 📝
+-  This module assumes that you know the **time zone** from origin dates 🎓
 
    </details>
 

@@ -211,7 +211,7 @@
    > <img src="./.github/assets/readme/vite.svg" >
    > <img src="./.github/assets/readme/react.svg" >
 
-   <details open>
+   <details>
    <summary>See an example</summary>
 
    ```javascript
@@ -230,7 +230,7 @@
    > <img src="./.github/assets/readme/vite.svg" >
    > <img src="./.github/assets/readme/react.svg" >
 
-   <details open>
+   <details>
    <summary>See an example</summary>
 
    <!-- prettier-ignore -->
@@ -256,7 +256,7 @@
    > <img src="./.github/assets/readme/vite.svg" >
    > <img src="./.github/assets/readme/react.svg" >
 
-   <details open>
+   <details>
    <summary>See an example</summary>
 
    <!-- prettier-ignore -->

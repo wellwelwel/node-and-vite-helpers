@@ -429,7 +429,7 @@ const tokenGenerate = (tokenSize = 32) => {
  * ✅ Node | Vite | React
  */
 let defaultLocale = 'pt-BR';
-let defaultTimezone = 'America/Sao_Paulo';
+let defaultTimeZone = 'America/Sao_Paulo';
 let defaultComercialHours = ['08:00', '18:00'];
 let defaultHolidays = {
     // https://www.in.gov.br/web/dou/-/portaria-me-n-11.090-de-27-de-dezembro-de-2022-454503426
@@ -447,11 +447,11 @@ let defaultHolidays = {
     12: [24, 25, 31],
 };
 const set = {
-    locale: (local) => {
-        defaultLocale = local;
+    locale: (locale) => {
+        defaultLocale = locale;
     },
     timeZone: (timeZone) => {
-        defaultTimezone = timeZone;
+        defaultTimeZone = timeZone;
     },
     comercailHours: (comercailHours) => {
         defaultComercialHours = comercailHours;
@@ -462,12 +462,12 @@ const set = {
 };
 const get = {
     locale: () => defaultLocale,
-    timeZone: () => defaultTimezone,
+    timeZone: () => defaultTimeZone,
     comercailHours: () => defaultComercialHours,
     holidays: () => defaultHolidays,
 };
-const toLocalDate = (date, options) => {
-    const timeZone = options?.timeZone || defaultTimezone;
+const toLocaleDate = (date, options) => {
+    const timeZone = options?.timeZone || defaultTimeZone;
     const dateUTC = date.toLocaleString('eu', {
         timeZone,
         day: '2-digit',
@@ -491,32 +491,33 @@ const pastDate = (date, days, options) => {
     const dateClone = new Date(date);
     const baseDate = new Date(dateClone.getTime());
     const newDate = new Date(dateClone.setDate(baseDate.getDate() - days));
-    const timeZone = options?.timeZone || defaultTimezone;
-    return toLocalDate(newDate, { timeZone });
+    const timeZone = options?.timeZone || defaultTimeZone;
+    return toLocaleDate(newDate, { timeZone });
 };
 const futureDate = (date, days, options) => {
     const dateClone = new Date(date);
     const baseDate = new Date(dateClone.getTime());
     const newDate = new Date(dateClone.setDate(baseDate.getDate() + days));
-    const timeZone = options?.timeZone || defaultTimezone;
-    return toLocalDate(newDate, { timeZone });
+    const timeZone = options?.timeZone || defaultTimeZone;
+    return toLocaleDate(newDate, { timeZone });
 };
 const toLocaleString = (date, options) => {
-    const local = options?.local || defaultLocale;
-    const timeZone = options?.timeZone || defaultTimezone;
-    return new Date(date).toLocaleString(local, { timeZone });
+    const locale = options?.locale || defaultLocale;
+    const timeZone = options?.timeZone || defaultTimeZone;
+    return new Date(date).toLocaleString(locale, { timeZone });
 };
 const toYodaString = (date, options) => {
-    const timeZone = options?.timeZone || defaultTimezone;
-    const date8601 = toLocalDate(date, { timeZone }).toISOString();
+    const timeZone = options?.timeZone || defaultTimeZone;
+    const date8601 = toLocaleDate(date, { timeZone }).toISOString();
     const ISO = date8601.replace(/\.[0-9]{3}Z$/, '').replace(/T/, ' ');
     return ISO;
 };
 const isEqual = (date, compareDate) => date.getTime() === compareDate.getTime();
-const isMinor = (date, compareDate) => date.getTime() < compareDate.getTime();
-const isMajor = (date, compareDate) => date.getTime() > compareDate.getTime();
-const isMinorOrEqual = (date, compareDate) => date.getTime() >= compareDate.getTime();
-const isMajorOrEqual = (date, compareDate) => date.getTime() <= compareDate.getTime();
+const isSmaller = (date, compareDate) => date.getTime() < compareDate.getTime();
+const isBigger = (date, compareDate) => date.getTime() > compareDate.getTime();
+const isSmallerOrEqual = (date, compareDate) => date.getTime() <= compareDate.getTime();
+const isBiggerOrEqual = (date, compareDate) => date.getTime() >= compareDate.getTime();
+const isBetween = (startDate, date, endDate) => isBiggerOrEqual(date, startDate) && isSmallerOrEqual(date, endDate);
 const parse = (date) => {
     return {
         year: date.getFullYear(),
@@ -527,8 +528,8 @@ const parse = (date) => {
         seconds: date.getSeconds(),
     };
 };
-const getDiff = (date, compareDate) => {
-    const situation = isMajor(date, compareDate) ? 'passed' : 'remaining';
+const diff = (date, compareDate) => {
+    const situation = isBigger(date, compareDate) ? 'passed' : 'remaining';
     const milliseconds = Math.abs(date.getTime() - compareDate.getTime());
     const seconds = Math.floor((milliseconds / 1000) % 60);
     const minutes = Math.floor((milliseconds / 1000 / 60) % 60);
@@ -546,8 +547,13 @@ const getDiff = (date, compareDate) => {
         seconds,
     };
 };
+const isWeek = (date, options) => {
+    const timeZone = options?.timeZone || defaultTimeZone;
+    const weekday = date.toLocaleDateString('en-US', { weekday: 'long', timeZone });
+    return !/saturday|sunday/gi.test(weekday);
+};
 const isWeekend = (date, options) => {
-    const timeZone = options?.timeZone || defaultTimezone;
+    const timeZone = options?.timeZone || defaultTimeZone;
     const weekday = date.toLocaleDateString('en-US', { weekday: 'long', timeZone });
     return /saturday|sunday/gi.test(weekday);
 };
@@ -559,33 +565,35 @@ const isHoliday = (date) => {
         return false;
     return holiday.includes(day);
 };
-const getNextBusinessDay = (date) => {
+const getNextBusinessDate = (date) => {
     let nextWorkDay = futureDate(new Date(date), 1, { timeZone: 'UTC' });
-    return isWeekend(nextWorkDay) || isHoliday(nextWorkDay) ? getNextBusinessDay(nextWorkDay) : nextWorkDay;
+    return isWeekend(nextWorkDay) || isHoliday(nextWorkDay) ? getNextBusinessDate(nextWorkDay) : nextWorkDay;
 };
-const getBusinessDay = (date, days = 1, options) => {
-    const timeZone = options?.timeZone || defaultTimezone;
+const getBusinessDate = (date, days = 1, options) => {
+    const timeZone = options?.timeZone || defaultTimeZone;
     let searchWorkDate = new Date(date);
     for (let i = 0; i < days; i++)
-        searchWorkDate = getNextBusinessDay(searchWorkDate);
-    return toLocalDate(searchWorkDate, { timeZone });
+        searchWorkDate = getNextBusinessDate(searchWorkDate);
+    return toLocaleDate(searchWorkDate, { timeZone });
 };
 var dates = {
     toLocaleString,
     toYodaString,
     pastDate,
     futureDate,
-    toLocalDate,
+    toLocaleDate,
     isEqual,
-    isMinor,
-    isMajor,
-    isMinorOrEqual,
-    isMajorOrEqual,
+    isSmaller,
+    isBigger,
+    isSmallerOrEqual,
+    isBiggerOrEqual,
+    isBetween,
     parse,
-    getDiff,
+    diff,
+    isWeek,
     isWeekend,
     isHoliday,
-    getBusinessDay,
+    getBusinessDate,
     set,
     get,
 };

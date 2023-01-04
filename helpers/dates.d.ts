@@ -1,29 +1,30 @@
 /**
  * ✅ Node | Vite | React
  */
-import { Locales, Timezones, Months } from '../types.js';
+import { Locales, TimeZones, Months } from '../types.js';
 declare const _default: {
     toLocaleString: (date: Date, options?: {
-        local?: Locales | undefined;
-        timeZone?: Timezones | undefined;
+        locale?: Locales | undefined;
+        timeZone?: TimeZones | undefined;
     } | undefined) => string;
     toYodaString: (date: Date, options?: {
-        timeZone?: Timezones | undefined;
+        timeZone?: TimeZones | undefined;
     } | undefined) => string;
     pastDate: (date: Date, days: number, options?: {
-        timeZone?: Timezones | undefined;
+        timeZone?: TimeZones | undefined;
     } | undefined) => Date;
     futureDate: (date: Date, days: number, options?: {
-        timeZone?: Timezones | undefined;
+        timeZone?: TimeZones | undefined;
     } | undefined) => Date;
-    toLocalDate: (date: Date, options?: {
-        timeZone?: Timezones | undefined;
+    toLocaleDate: (date: Date, options?: {
+        timeZone?: TimeZones | undefined;
     } | undefined) => Date;
     isEqual: (date: Date, compareDate: Date) => boolean;
-    isMinor: (date: Date, compareDate: Date) => boolean;
-    isMajor: (date: Date, compareDate: Date) => boolean;
-    isMinorOrEqual: (date: Date, compareDate: Date) => boolean;
-    isMajorOrEqual: (date: Date, compareDate: Date) => boolean;
+    isSmaller: (date: Date, compareDate: Date) => boolean;
+    isBigger: (date: Date, compareDate: Date) => boolean;
+    isSmallerOrEqual: (date: Date, compareDate: Date) => boolean;
+    isBiggerOrEqual: (date: Date, compareDate: Date) => boolean;
+    isBetween: (startDate: Date, date: Date, endDate: Date) => boolean;
     parse: (date: Date) => {
         year: number;
         month: number;
@@ -32,7 +33,7 @@ declare const _default: {
         minutes: number;
         seconds: number;
     };
-    getDiff: (date: Date, compareDate: Date) => {
+    diff: (date: Date, compareDate: Date) => {
         situation: "passed" | "remaining";
         years: number;
         months: number;
@@ -41,22 +42,25 @@ declare const _default: {
         minutes: number;
         seconds: number;
     };
+    isWeek: (date: Date, options?: {
+        timeZone?: TimeZones | undefined;
+    } | undefined) => boolean;
     isWeekend: (date: Date, options?: {
-        timeZone?: Timezones | undefined;
+        timeZone?: TimeZones | undefined;
     } | undefined) => boolean;
     isHoliday: (date: Date) => boolean;
-    getBusinessDay: (date: Date, days?: number, options?: {
-        timeZone?: Timezones | undefined;
+    getBusinessDate: (date: Date, days?: number, options?: {
+        timeZone?: TimeZones | undefined;
     } | undefined) => Date;
     set: {
-        locale: (local: Locales) => void;
-        timeZone: (timeZone: Timezones) => void;
+        locale: (locale: Locales) => void;
+        timeZone: (timeZone: TimeZones) => void;
         comercailHours: (comercailHours: [string, string]) => void;
         holidays: (holidays: Months) => void;
     };
     get: {
         locale: () => Locales;
-        timeZone: () => Timezones;
+        timeZone: () => TimeZones;
         comercailHours: () => string[];
         holidays: () => Months;
     };

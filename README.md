@@ -19,15 +19,15 @@
    <details open>
    <summary>See an example</summary>
 
-<!-- prettier-ignore -->
-   ```javascript
-   import { s, sAll, sEl, sElAll } from 'node-and-vite-helpers';
+   <!-- prettier-ignore -->
+      ```javascript
+      import { s, sAll, sEl, sElAll } from 'node-and-vite-helpers';
 
-   s('#id');                     // document.querySelector('#id');
-   sAll('.class');               // document.querySelectorAll('.class');
-   sEl(element, '.child');       // element.querySelector('.child');
-   sElAll(element, '.childs');   // element.querySelectorAll('.childs');
-   ```
+      s('#id');                     // document.querySelector('#id');
+      sAll('.class');               // document.querySelectorAll('.class');
+      sEl(element, '.child');       // element.querySelector('.child');
+      sElAll(element, '.childs');   // element.querySelectorAll('.childs');
+      ```
 
    </details>
 
@@ -42,18 +42,18 @@
    <details open>
    <summary>See an example</summary>
 
-<!-- prettier-ignore -->
-   ```javascript
-   import { setTime } from 'node-and-vite-helpers';
+   <!-- prettier-ignore -->
+      ```javascript
+      import { setTime } from 'node-and-vite-helpers';
 
-   setTime(1000);    // 1000
-   setTime('1000');  // 1000
+      setTime(1000);    // 1000
+      setTime('1000');  // 1000
 
-   setTime('1s');    // 1000
-   setTime('1m');    // 60000
-   setTime('1h');    // 3600000
-   setTime('1d');    // 86400000
-   ```
+      setTime('1s');    // 1000
+      setTime('1m');    // 60000
+      setTime('1h');    // 3600000
+      setTime('1d');    // 86400000
+      ```
 
    </details>
 
@@ -68,14 +68,14 @@
    <details open>
    <summary>See an example</summary>
 
-<!-- prettier-ignore -->
-   ```javascript
-   import { cx } from 'node-and-vite-helpers';
+   <!-- prettier-ignore -->
+      ```javascript
+      import { cx } from 'node-and-vite-helpers';
 
-   cx('c1', 'c2 c3');            // 'c1 c2 c3'
-   cx(validCond && 'active');    // 'active'
-   cx(invalidCond && 'active');  // ''
-   ```
+      cx('c1', 'c2 c3');            // 'c1 c2 c3'
+      cx(validCond && 'active');    // 'active'
+      cx(invalidCond && 'active');  // ''
+      ```
 
    </details>
 
@@ -233,18 +233,18 @@
    <details open>
    <summary>See an example</summary>
 
-<!-- prettier-ignore -->
-   ```javascript
-   import { isEmpty, notEmpty } from 'node-and-vite-helpers';
+   <!-- prettier-ignore -->
+      ```javascript
+      import { isEmpty, notEmpty } from 'node-and-vite-helpers';
 
-   isEmpty('');            // true
-   isEmpty('   ');         // true
-   isEmpty('anything');    // false
+      isEmpty('');            // true
+      isEmpty('   ');         // true
+      isEmpty('anything');    // false
 
-   notEmpty('');           // false
-   notEmpty('   ');        // false
-   notEmpty('anything');   // true
-   ```
+      notEmpty('');           // false
+      notEmpty('   ');        // false
+      notEmpty('anything');   // true
+      ```
 
    </details>
 
@@ -259,19 +259,19 @@
    <details open>
    <summary>See an example</summary>
 
-<!-- prettier-ignore -->
-   ```javascript
-   import { forceArray } from 'node-and-vite-helpers';
+   <!-- prettier-ignore -->
+      ```javascript
+      import { forceArray } from 'node-and-vite-helpers';
 
-   forceArray('string');         // [ 'string' ]
-   forceArray(1);                // [ 1 ]
-   forceArray(true);             // [ true ]
-   forceArray(false);            // [ false ]
-   forceArray({});               // [ {} ]
-   forceArray(/* any */);        // [ /* any */ ]
+      forceArray('string');         // [ 'string' ]
+      forceArray(1);                // [ 1 ]
+      forceArray(true);             // [ true ]
+      forceArray(false);            // [ false ]
+      forceArray({});               // [ {} ]
+      forceArray(/* any */);        // [ /* any */ ]
 
-   forceArray([ /* items */ ]);  // [ /* items */ ]
-   ```
+      forceArray([ /* items */ ]);  // [ /* items */ ]
+      ```
 
    </details>
 

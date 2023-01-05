@@ -11,7 +11,7 @@
 
 ### 💡 Helpers
 
--  #### [selectors](./src/helpers/selectors.ts)
+-  #### [selectors](./src/selectors.ts)
 
    > <img src="./.github/assets/readme/vite.svg" >
    > <img src="./.github/assets/readme/react.svg" >
@@ -34,7 +34,7 @@
 
 <hr />
 
--  #### [setTime](./src/helpers/set-time.ts)
+-  #### [setTime](./src/set-time.ts)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
    > <img src="./.github/assets/readme/vite.svg" >
@@ -61,7 +61,7 @@
 
 <hr />
 
--  #### [doClass](./src/helpers/do-class.ts)
+-  #### [doClass](./src/do-class.ts)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
    > <img src="./.github/assets/readme/vite.svg" >
@@ -84,7 +84,7 @@
 
 <hr />
 
--  #### [head](./src/helpers/head.ts)
+-  #### [head](./src/head.ts)
 
    > <img src="./.github/assets/readme/vite.svg" >
    > <img src="./.github/assets/readme/react.svg" >
@@ -147,7 +147,7 @@
 
 <hr />
 
--  #### [dates](./src/helpers/dates.ts)
+-  #### [dates](./src/dates.ts)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
    > <img src="./.github/assets/readme/vite.svg" >
@@ -245,7 +245,7 @@
       dates.set.holidays(holidays);
       ```
 
-   -  You can see the default holidays in [defaultHolidays](./src/helpers/dates.ts#L10)
+   -  You can see the default holidays in [defaultHolidays](./src/dates.ts#L10)
 
 -  You can customize `timeZone` by overwriting the default params:
 
@@ -264,7 +264,7 @@
 
 <hr />
 
--  #### [input](./src/helpers/input.ts)
+-  #### [input](./src/input.ts)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
    > <img src="./.github/assets/readme/vite.svg" >
@@ -327,7 +327,7 @@
 
 <hr />
 
--  #### [tokenGenerate](./src/helpers/token-generate.ts)
+-  #### [tokenGenerate](./src/token-generate.ts)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
    > <img src="./.github/assets/readme/vite.svg" >
@@ -347,7 +347,7 @@
 
 <hr />
 
--  #### [empty](./src/helpers/empty.ts)
+-  #### [empty](./src/empty.ts)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
    > <img src="./.github/assets/readme/vite.svg" >
@@ -374,7 +374,7 @@
 
 <hr />
 
--  #### [forceArray](./src/helpers/force-array.ts)
+-  #### [forceArray](./src/force-array.ts)
 
    > <img src="./.github/assets/readme/nodejs.svg" >
    > <img src="./.github/assets/readme/vite.svg" >

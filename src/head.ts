@@ -16,7 +16,7 @@ const mimes = {
    webp: 'image/webp',
 };
 
-const createElement = (options: {
+export const createElement = (options: {
    element: string;
    attributes?: {
       name: string;
@@ -34,7 +34,7 @@ const createElement = (options: {
    document.head.appendChild(element);
 };
 
-const title = (text: string) => {
+export const title = (text: string) => {
    const current = s('head title');
 
    // If already exists
@@ -46,7 +46,7 @@ const title = (text: string) => {
    createElement({ element: 'title', textContext: text });
 };
 
-const favicon = (importedIcon: string) => {
+export const favicon = (importedIcon: string) => {
    const current = s('head link[rel="icon"]') as HTMLLinkElement;
    const type = mimes[importedIcon?.split('.')?.pop()?.toLowerCase() as keyof typeof mimes];
 
@@ -76,7 +76,7 @@ const favicon = (importedIcon: string) => {
    });
 };
 
-const faviconBase64 = (base64: string) => {
+export const faviconBase64 = (base64: string) => {
    const current = s('head link[rel="icon"]') as HTMLLinkElement;
    const type = mimes[base64?.match(/image\/(.+);/)?.[1]?.toLowerCase() as keyof typeof mimes];
 
@@ -106,7 +106,7 @@ const faviconBase64 = (base64: string) => {
    });
 };
 
-const meta = (name: string, content: string) => {
+export const meta = (name: string, content: string) => {
    const current = s(`head meta[name="${name}"]`) as HTMLMetaElement;
 
    // If already exists
@@ -130,7 +130,7 @@ const meta = (name: string, content: string) => {
    });
 };
 
-const link = (rel: string, href: string) => {
+export const link = (rel: string, href: string) => {
    const current = s(`head link[rel="${rel}"]`) as HTMLLinkElement;
 
    // If already exists
@@ -153,7 +153,3 @@ const link = (rel: string, href: string) => {
       ],
    });
 };
-
-const head = { title, favicon, faviconBase64, meta, link, createElement };
-
-export { head };

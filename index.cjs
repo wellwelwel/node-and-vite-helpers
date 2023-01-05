@@ -171,7 +171,16 @@ const link = (rel, href) => {
         ],
     });
 };
-const head = { title, favicon, faviconBase64, meta, link, createElement };
+
+var head = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    createElement: createElement,
+    favicon: favicon,
+    faviconBase64: faviconBase64,
+    link: link,
+    meta: meta,
+    title: title
+});
 
 /**
  * ✅ Node | Vite | React
@@ -376,27 +385,29 @@ const getBusinessDate = (date, days = 1, options) => {
         searchWorkDate = getNextBusinessDate(searchWorkDate);
     return toLocaleDate(searchWorkDate, { timeZone });
 };
-var dates = {
-    toLocaleString,
-    toYodaString,
-    pastDate,
-    futureDate,
-    toLocaleDate,
-    isEqual,
-    isSmaller,
-    isBigger,
-    isSmallerOrEqual,
-    isBiggerOrEqual,
-    isBetween,
-    parse,
-    diff,
-    isWeek,
-    isWeekend,
-    isHoliday,
-    getBusinessDate,
-    set,
-    get,
-};
+
+var dates = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    diff: diff,
+    futureDate: futureDate,
+    get: get,
+    getBusinessDate: getBusinessDate,
+    isBetween: isBetween,
+    isBigger: isBigger,
+    isBiggerOrEqual: isBiggerOrEqual,
+    isEqual: isEqual,
+    isHoliday: isHoliday,
+    isSmaller: isSmaller,
+    isSmallerOrEqual: isSmallerOrEqual,
+    isWeek: isWeek,
+    isWeekend: isWeekend,
+    parse: parse,
+    pastDate: pastDate,
+    set: set,
+    toLocaleDate: toLocaleDate,
+    toLocaleString: toLocaleString,
+    toYodaString: toYodaString
+});
 
 exports.cx = cx;
 exports.dates = dates;

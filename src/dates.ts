@@ -2,7 +2,7 @@
  * ✅ Node | Vite | React
  */
 
-import { Locales, TimeZones, Months } from '../types.js';
+import { Locales, TimeZones, Months } from './types.js';
 
 let defaultLocale: Locales = 'pt-BR';
 let defaultTimeZone: TimeZones = 'America/Sao_Paulo';
@@ -23,7 +23,7 @@ let defaultHolidays: Months = {
    12: [24, 25, 31],
 };
 
-const set = {
+export const set = {
    locale: (locale: Locales) => {
       defaultLocale = locale;
    },
@@ -38,14 +38,14 @@ const set = {
    },
 };
 
-const get = {
+export const get = {
    locale: () => defaultLocale,
    timeZone: () => defaultTimeZone,
    comercailHours: () => defaultComercialHours,
    holidays: () => defaultHolidays,
 };
 
-const toLocaleDate = (date: Date, options?: { timeZone?: TimeZones }): Date => {
+export const toLocaleDate = (date: Date, options?: { timeZone?: TimeZones }): Date => {
    const timeZone = options?.timeZone || defaultTimeZone;
    const dateUTC = date.toLocaleString('eu', {
       timeZone,
@@ -71,7 +71,7 @@ const toLocaleDate = (date: Date, options?: { timeZone?: TimeZones }): Date => {
    return new Date(gmtDate);
 };
 
-const pastDate = (date: Date, days: number, options?: { timeZone?: TimeZones }) => {
+export const pastDate = (date: Date, days: number, options?: { timeZone?: TimeZones }) => {
    const dateClone = new Date(date);
    const baseDate = new Date(dateClone.getTime());
    const newDate = new Date(dateClone.setDate(baseDate.getDate() - days));
@@ -80,7 +80,7 @@ const pastDate = (date: Date, days: number, options?: { timeZone?: TimeZones }) 
    return toLocaleDate(newDate, { timeZone });
 };
 
-const futureDate = (date: Date, days: number, options?: { timeZone?: TimeZones }) => {
+export const futureDate = (date: Date, days: number, options?: { timeZone?: TimeZones }) => {
    const dateClone = new Date(date);
    const baseDate = new Date(dateClone.getTime());
    const newDate = new Date(dateClone.setDate(baseDate.getDate() + days));
@@ -89,14 +89,14 @@ const futureDate = (date: Date, days: number, options?: { timeZone?: TimeZones }
    return toLocaleDate(newDate, { timeZone });
 };
 
-const toLocaleString = (date: Date, options?: { locale?: Locales; timeZone?: TimeZones }): string => {
+export const toLocaleString = (date: Date, options?: { locale?: Locales; timeZone?: TimeZones }): string => {
    const locale = options?.locale || defaultLocale;
    const timeZone = options?.timeZone || defaultTimeZone;
 
    return new Date(date).toLocaleString(locale, { timeZone });
 };
 
-const toYodaString = (date: Date, options?: { timeZone?: TimeZones }): string => {
+export const toYodaString = (date: Date, options?: { timeZone?: TimeZones }): string => {
    const timeZone = options?.timeZone || defaultTimeZone;
    const date8601 = toLocaleDate(date, { timeZone }).toISOString();
 
@@ -105,20 +105,20 @@ const toYodaString = (date: Date, options?: { timeZone?: TimeZones }): string =>
    return ISO;
 };
 
-const isEqual = (date: Date, compareDate: Date) => date.getTime() === compareDate.getTime();
+export const isEqual = (date: Date, compareDate: Date) => date.getTime() === compareDate.getTime();
 
-const isSmaller = (date: Date, compareDate: Date) => date.getTime() < compareDate.getTime();
+export const isSmaller = (date: Date, compareDate: Date) => date.getTime() < compareDate.getTime();
 
-const isBigger = (date: Date, compareDate: Date) => date.getTime() > compareDate.getTime();
+export const isBigger = (date: Date, compareDate: Date) => date.getTime() > compareDate.getTime();
 
-const isSmallerOrEqual = (date: Date, compareDate: Date) => date.getTime() <= compareDate.getTime();
+export const isSmallerOrEqual = (date: Date, compareDate: Date) => date.getTime() <= compareDate.getTime();
 
-const isBiggerOrEqual = (date: Date, compareDate: Date) => date.getTime() >= compareDate.getTime();
+export const isBiggerOrEqual = (date: Date, compareDate: Date) => date.getTime() >= compareDate.getTime();
 
-const isBetween = (startDate: Date, date: Date, endDate: Date) =>
+export const isBetween = (startDate: Date, date: Date, endDate: Date) =>
    isBiggerOrEqual(date, startDate) && isSmallerOrEqual(date, endDate);
 
-const parse = (date: Date) => {
+export const parse = (date: Date) => {
    return {
       year: date.getFullYear(),
       month: date.getMonth() + 1,
@@ -129,7 +129,7 @@ const parse = (date: Date) => {
    };
 };
 
-const diff = (
+export const diff = (
    date: Date,
    compareDate: Date
 ): {
@@ -161,21 +161,21 @@ const diff = (
    };
 };
 
-const isWeek = (date: Date, options?: { timeZone?: TimeZones }) => {
+export const isWeek = (date: Date, options?: { timeZone?: TimeZones }) => {
    const timeZone = options?.timeZone || defaultTimeZone;
    const weekday = date.toLocaleDateString('en-US', { weekday: 'long', timeZone });
 
    return !/saturday|sunday/gi.test(weekday);
 };
 
-const isWeekend = (date: Date, options?: { timeZone?: TimeZones }) => {
+export const isWeekend = (date: Date, options?: { timeZone?: TimeZones }) => {
    const timeZone = options?.timeZone || defaultTimeZone;
    const weekday = date.toLocaleDateString('en-US', { weekday: 'long', timeZone });
 
    return /saturday|sunday/gi.test(weekday);
 };
 
-const isHoliday = (date: Date) => {
+export const isHoliday = (date: Date) => {
    const day = date.getDate();
    const month = date.getMonth() + 1;
    const holiday = defaultHolidays?.[month as keyof Months] || false;
@@ -191,7 +191,7 @@ const getNextBusinessDate = (date: Date): Date => {
    return isWeekend(nextWorkDay) || isHoliday(nextWorkDay) ? getNextBusinessDate(nextWorkDay) : nextWorkDay;
 };
 
-const getBusinessDate = (date: Date, days: number = 1, options?: { timeZone?: TimeZones }) => {
+export const getBusinessDate = (date: Date, days: number = 1, options?: { timeZone?: TimeZones }) => {
    const timeZone = options?.timeZone || defaultTimeZone;
 
    let searchWorkDate = new Date(date);
@@ -199,27 +199,4 @@ const getBusinessDate = (date: Date, days: number = 1, options?: { timeZone?: Ti
    for (let i = 0; i < days; i++) searchWorkDate = getNextBusinessDate(searchWorkDate);
 
    return toLocaleDate(searchWorkDate, { timeZone });
-};
-
-export default {
-   toLocaleString,
-   toYodaString,
-   pastDate,
-   futureDate,
-   toLocaleDate,
-   isEqual,
-   isSmaller,
-   isBigger,
-   isSmallerOrEqual,
-   isBiggerOrEqual,
-   isBetween,
-   parse,
-   diff,
-   isWeek,
-   isWeekend,
-   isHoliday,
-   getBusinessDate,
-
-   set,
-   get,
 };

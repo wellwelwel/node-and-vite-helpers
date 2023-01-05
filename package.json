@@ -16,8 +16,6 @@
       "html-entities": "^2.3.3"
    },
    "devDependencies": {
-      "@rollup/plugin-commonjs": "^24.0.0",
-      "@rollup/plugin-node-resolve": "^15.0.1",
       "@rollup/plugin-typescript": "^10.0.1",
       "packages-update": "^1.2.1",
       "prettier": "^2.8.1",

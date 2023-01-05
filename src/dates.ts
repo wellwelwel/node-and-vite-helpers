@@ -47,7 +47,7 @@ export const get = {
 
 export const toLocaleDate = (date: Date, options?: { timeZone?: TimeZones }): Date => {
    const timeZone = options?.timeZone || defaultTimeZone;
-   const dateUTC = date.toLocaleString('eu', {
+   const dateUTC = date.toLocaleString('pt-BR', {
       timeZone,
       day: '2-digit',
       month: '2-digit',
@@ -61,7 +61,7 @@ export const toLocaleDate = (date: Date, options?: { timeZone?: TimeZones }): Da
 
    let gmtDate = '';
 
-   gmtDate += getDate.replace(/\//g, '-');
+   gmtDate += getDate.split('/').reverse().join('-');
    gmtDate += 'T';
    gmtDate += getTime;
    gmtDate += '.';

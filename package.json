@@ -1,7 +1,7 @@
 {
    "name": "node-and-vite-helpers",
    "main": "./index.mjs",
-   "version": "2.1.1",
+   "version": "2.1.2",
    "type": "module",
    "module": "./index.mjs",
    "types": "./index.d.ts",

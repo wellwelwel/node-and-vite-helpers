@@ -22,6 +22,7 @@
    <!-- prettier-ignore -->
       ```javascript
       import { s, sAll, sEl, sElAll } from 'node-and-vite-helpers';
+      // import { s, sAll, sEl, sElAll } from 'node-and-vite-helpers/selectors';
 
       s('#id');                     // document.querySelector('#id');
       sAll('.class');               // document.querySelectorAll('.class');
@@ -45,6 +46,7 @@
    <!-- prettier-ignore -->
       ```javascript
       import { setTime } from 'node-and-vite-helpers';
+      // import { setTime } from 'node-and-vite-helpers/set-time';
 
       setTime(1000);    // 1000
       setTime('1000');  // 1000
@@ -71,6 +73,7 @@
    <!-- prettier-ignore -->
       ```javascript
       import { cx } from 'node-and-vite-helpers';
+      // import { cx } from 'node-and-vite-helpers/do-class';
 
       cx('c1', 'c2 c3');            // 'c1 c2 c3'
       cx(validCond && 'active');    // 'active'
@@ -91,6 +94,8 @@
 
    ```javascript
    import { head } from 'node-and-vite-helpers';
+   // import * as head from 'node-and-vite-helpers/head';
+
    import favicon from '../favicon.svg';
 
    /**
@@ -153,6 +158,7 @@
 
    ```javascript
    import { dates } from 'node-and-vite-helpers';
+   // import * as dates from 'node-and-vite-helpers/dates';
 
    // defaults 🔓
    dates.set.locale('pt-BR');
@@ -269,7 +275,10 @@
 
    ```javascript
    import { striptags, entities, xss } from 'node-and-vite-helpers';
+   // import { striptags, entities, xss } from 'node-and-vite-helpers/input';
+   ```
 
+   ```javascript
    striptags('<div>🤔...</div>'); // 🤔...
 
    xss('<div>🤔...</div>'); // &#129300;...
@@ -329,6 +338,7 @@
 
    ```javascript
    import { tokenGenerate } from 'node-and-vite-helpers';
+   // import { tokenGenerate } from 'node-and-vite-helpers/token-generate';
 
    tokenGenerate(8); // '45832c3f', 'fa3fe988', '749ecfaa', ...
    ```
@@ -349,6 +359,7 @@
    <!-- prettier-ignore -->
       ```javascript
       import { isEmpty, notEmpty } from 'node-and-vite-helpers';
+      // import { isEmpty, notEmpty } from 'node-and-vite-helpers/empty';
 
       isEmpty('');            // true
       isEmpty('   ');         // true
@@ -375,6 +386,7 @@
    <!-- prettier-ignore -->
       ```javascript
       import { forceArray } from 'node-and-vite-helpers';
+      // import { forceArray } from 'node-and-vite-helpers/force-array';
 
       forceArray('string');         // [ 'string' ]
       forceArray(1);                // [ 1 ]

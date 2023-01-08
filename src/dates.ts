@@ -185,10 +185,12 @@ export const isHoliday = (date: Date) => {
    return holiday.includes(day);
 };
 
+export const isBusinessDay = (date: Date) => !isHoliday(date) && !isWeekend(date);
+
 const getNextBusinessDate = (date: Date): Date => {
    let nextWorkDay = futureDate(new Date(date), 1, { timeZone: 'UTC' });
 
-   return isWeekend(nextWorkDay) || isHoliday(nextWorkDay) ? getNextBusinessDate(nextWorkDay) : nextWorkDay;
+   return isBusinessDay(nextWorkDay) ? nextWorkDay : getNextBusinessDate(nextWorkDay);
 };
 
 export const getBusinessDate = (date: Date, days: number = 1, options?: { timeZone?: TimeZones }) => {

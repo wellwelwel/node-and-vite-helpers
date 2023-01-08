@@ -1,7 +1,7 @@
 {
    "name": "node-and-vite-helpers",
    "main": "./index.mjs",
-   "version": "2.1.5",
+   "version": "2.1.6",
    "type": "module",
    "scripts": {
       "build": "npx rollup -c;",
@@ -16,9 +16,9 @@
       "html-entities": "^2.3.3"
    },
    "devDependencies": {
-      "@rollup/plugin-typescript": "^10.0.1",
+      "@rollup/plugin-typescript": "^11.0.0",
       "packages-update": "^1.2.1",
-      "prettier": "^2.8.1",
+      "prettier": "^2.8.2",
       "rollup": "^3.9.1"
    },
    "license": "MIT",

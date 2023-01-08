@@ -225,6 +225,7 @@
    dates.isHoliday(date);
    dates.isWeekend(date);
    dates.isWeek(date);
+   dates.isBusinessDay(date);
    dates.isEqual(date, compareDate);
    dates.isSmaller(date, compareDate);
    dates.isBigger(date, compareDate);

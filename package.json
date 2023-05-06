@@ -16,10 +16,10 @@
       "html-entities": "^2.3.3"
    },
    "devDependencies": {
-      "@rollup/plugin-typescript": "^11.0.0",
+      "@rollup/plugin-typescript": "^11.1.0",
       "packages-update": "^1.2.1",
-      "prettier": "^2.8.2",
-      "rollup": "^3.9.1"
+      "prettier": "^2.8.8",
+      "rollup": "^3.21.5"
    },
    "license": "MIT",
    "repository": {
@@ -54,43 +54,53 @@
    "exports": {
       ".": {
          "import": "./index.mjs",
-         "require": "./index.cjs"
+         "require": "./index.cjs",
+         "types": "./index.d.ts"
       },
       "./dates": {
          "import": "./dates.mjs",
-         "require": "./dates.cjs"
+         "require": "./dates.cjs",
+         "types": "./dates.d.ts"
       },
       "./do-class": {
          "import": "./do-class.mjs",
-         "require": "./do-class.cjs"
+         "require": "./do-class.cjs",
+         "types": "./do-class.d.ts"
       },
       "./empty": {
          "import": "./empty.mjs",
-         "require": "./empty.cjs"
+         "require": "./empty.cjs",
+         "types": "./empty.d.ts"
       },
       "./force-array": {
          "import": "./force-array.mjs",
-         "require": "./force-array.cjs"
+         "require": "./force-array.cjs",
+         "types": "./force-array.d.ts"
       },
       "./head": {
          "import": "./head.mjs",
-         "require": "./head.cjs"
+         "require": "./head.cjs",
+         "types": "./head.d.ts"
       },
       "./input": {
          "import": "./input.mjs",
-         "require": "./input.cjs"
+         "require": "./input.cjs",
+         "types": "./input.d.ts"
       },
       "./selectors": {
          "import": "./selectors.mjs",
-         "require": "./selectors.cjs"
+         "require": "./selectors.cjs",
+         "types": "./selectors.d.ts"
       },
       "./set-time": {
          "import": "./set-time.mjs",
-         "require": "./set-time.cjs"
+         "require": "./set-time.cjs",
+         "types": "./set-time.d.ts"
       },
       "./token-generate": {
          "import": "./token-generate.mjs",
-         "require": "./token-generate.cjs"
+         "require": "./token-generate.cjs",
+         "types": "./token-generate.d.ts"
       }
    },
    "files": [
